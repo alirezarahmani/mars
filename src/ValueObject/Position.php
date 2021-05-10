@@ -9,6 +9,7 @@ use MarsRover\Domain\Plateau;
 
 /**
  * Class Position
+ * in php 8.1 we can define enum, but here I use 8.0
  * @package MarsRover\ValueObject
  */
 class Position

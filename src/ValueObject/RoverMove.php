@@ -8,6 +8,7 @@ use MarsRover\Exceptions\InvalidMoveException;
 
 /**
  * Class RoverMove
+ * in php 8.1 we can define enum, but here I use 8.0
  * @package MarsRover\ValueObject
  */
 class RoverMove

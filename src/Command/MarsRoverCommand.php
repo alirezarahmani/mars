@@ -21,12 +21,6 @@ class MarsRoverCommand implements CommandInterface
     private array $roverMoves;
 
     /**
-     * @var Direction
-     */
-    private Direction $roverDirection;
-
-
-    /**
      * MarsRoverCommand constructor.
      * @param int $x
      * @param int $y
@@ -72,5 +66,4 @@ class MarsRoverCommand implements CommandInterface
     {
         return $this->plateau;
     }
-
 }

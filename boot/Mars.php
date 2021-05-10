@@ -9,6 +9,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Finder\Finder;
 
+/**
+ * Class Mars
+ * This class is responsible to boot Mars project
+ * @package Boot
+ */
 class Mars
 {
     /**
@@ -23,13 +28,11 @@ class Mars
         }
     }
 
-    private function runHttp()
-    {
-        /**
-         * if we would have Http
-         */
-    }
-
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @throws \ReflectionException
+     */
     private function runCli(InputInterface $input, OutputInterface $output): void
     {
         $application = new Application();
@@ -46,6 +49,7 @@ class Mars
     }
 
     /**
+     * create mars project
      * @return Mars
      */
     public static function create()
@@ -54,6 +58,7 @@ class Mars
     }
 
     /**
+     * load all console classes
      * @param string $appPath
      * @return array[]
      * @throws \ReflectionException
@@ -63,7 +68,7 @@ class Mars
         $classes = [];
         $dir = $appPath . '/src/Cli';
         if (!is_dir($dir)) {
-            throw new \InvalidArgumentException('no valid directory');
+            throw new \InvalidArgumentException('not a valid directory');
         }
         $finder = new Finder();
 

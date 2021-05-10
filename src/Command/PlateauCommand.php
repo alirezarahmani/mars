@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace MarsRover\Command;
 
-use MarsRover\ValueObject\Direction;
-use MarsRover\ValueObject\Position;
-use MarsRover\ValueObject\RoverMove;
-
+/**
+ * Class PlateauCommand
+ * @package MarsRover\Command
+ */
 class PlateauCommand implements CommandInterface
 {
+    /**
+     * PlateauCommand constructor.
+     * @param int $x
+     * @param int $y
+     */
     public function __construct(private int $x, private int $y)
     {}
 

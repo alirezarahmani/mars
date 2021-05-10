@@ -4,15 +4,25 @@ declare(strict_types=1);
 
 namespace MarsRover\Domain;
 
-use Assert\Assertion;
 use MarsRover\Exceptions\PositionNotOnPlateauException;
 use MarsRover\ValueObject\Direction;
 use MarsRover\ValueObject\Position;
 use MarsRover\ValueObject\RoverMove;
 use MarsRover\Exceptions\InvalidDirectionException;
 
-class MarsRover
+/**
+ * Class MarsRover
+ *
+ * @package MarsRover\Domain
+ */
+final class MarsRover
 {
+    /**
+     * MarsRover constructor.
+     * @param Position $position
+     * @param Direction $heading
+     * @param Plateau $plateau
+     */
     public function __construct(private Position $position, private Direction $heading, private Plateau $plateau)
     {
         if ($this->position->isOnPlateau($plateau) === false) {
@@ -25,8 +35,12 @@ class MarsRover
         $this->plateau->addRover($this);
     }
 
+    /**
+     * @param RoverMove $roverMove
+     */
     public function move(RoverMove $roverMove)
     {
+        // in php 8.1 we can define enum, but here I use 8.0 had to type cast
         switch ((string)$roverMove) {
             case RoverMove::R:
                 $this->turnRight();
@@ -40,8 +54,12 @@ class MarsRover
         }
     }
 
+    /**
+     * turn a rover
+     */
     public function turnLeft()
     {
+        // in php 8.1 we can define enum, but here I use 8.0 had to type cast
         $this->heading = match ((string)$this->heading) {
             Direction::N => new Direction('W'),
             Direction::W => new Direction('S'),
@@ -51,18 +69,29 @@ class MarsRover
         };
     }
 
+    /**
+     * send current position
+     * @return string
+     */
     public function reportPosition(): string
     {
        return $this->position . ' ' . $this->heading;
     }
 
+    /**
+     * @return Position
+     */
     public function currentPosition(): Position
     {
        return $this->position;
     }
 
+    /**
+     * turn rover
+     */
     private function turnRight()
     {
+        // in php 8.1 we can define enum, but here I use 8.0 had to type cast
         $this->heading = match ((string)$this->heading) {
             Direction::N => new Direction('E'),
             Direction::W => new Direction('N'),
@@ -72,6 +101,9 @@ class MarsRover
         };
     }
 
+    /**
+     * move the rover
+     */
     private function moveForward()
     {
         $this->position->moveForward($this->heading);

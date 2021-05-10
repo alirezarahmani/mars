@@ -7,8 +7,15 @@ namespace MarsRover\Domain;
 use Assert\Assertion;
 use MarsRover\ValueObject\Position;
 
-class Plateau
+/**
+ * Class Plateau
+ * @package MarsRover\Domain
+ */
+final class Plateau
 {
+    /**
+     * @var array
+     */
     private array $rovers = [];
 
     public function __construct(private int $dimX, private int $dimY)
@@ -17,12 +24,11 @@ class Plateau
         Assertion::greaterOrEqualThan($this->dimY, 4, 'Y is too small for plateau');
     }
 
+    /**
+     * @param MarsRover $rover
+     */
     public function addRover(MarsRover $rover)
     {
-        Assertion::true(
-            $rover->currentPosition()->isOnPlateau($this),
-            'You can not add rover, rover\'s position: ' . $rover->currentPosition() . ' is not on plateau!'
-        );
         $this->rovers[] = $rover;
     }
 

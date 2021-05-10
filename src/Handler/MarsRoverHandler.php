@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace MarsRover\Handler;
 
-use MarsRover\Command\CommandInterface;
 use MarsRover\Command\MarsRoverCommand;
 use MarsRover\Domain\MarsRover;
-use MarsRover\ValueObject\Direction;
-use MarsRover\ValueObject\Position;
 use MarsRover\ValueObject\RoverMove;
 
 /**
@@ -17,8 +14,15 @@ use MarsRover\ValueObject\RoverMove;
  */
 class MarsRoverHandler
 {
+    /**
+     * @var MarsRover
+     */
     private MarsRover $marsRover;
 
+    /**
+     * MarsRoverHandler constructor.
+     * @param MarsRoverCommand $command
+     */
     public function __construct(private MarsRoverCommand $command)
     {
         $this->marsRover = new MarsRover($this->command->getPosition(), $this->command->getRoverDirection(), $this->command->getPlateau());
@@ -29,6 +33,9 @@ class MarsRoverHandler
         }
     }
 
+    /**
+     * @return string
+     */
     public function reportPosition(): string
     {
         return $this->marsRover->reportPosition();
