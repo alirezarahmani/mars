@@ -59,6 +59,7 @@ class MarsRoveCli extends Command
         $plateauCoordinatesY = intval(array_shift($args));
 
         // dispatch plateau manually
+        // no command bus
         $plateauCommand = new PlateauCommand($plateauCoordinatesX, $plateauCoordinatesY);
         $plateau = (new PlateauHandler($plateauCommand))->getPlateau();
 

@@ -1,3 +1,6 @@
+Introduction:
+===
+this is a naive implementation of CQRS using  Symfony components, please consider command bus is handled manually.
 How To Install:
 ===
 You just need to run ``composer install`` and make sure you have PHP 8.
@@ -23,7 +26,6 @@ Tests:
 ===
 Tests are written with `PHPunit` and you can find them in the `tests` folder.
 
-Technical Debt:
+Question:
 ===
-I use CQRs architecture for this assignment but, I do not use command Bus, I just created Command and handler. The main reason for this is because the task description said you should not spend more than 3 hours on this.  
-
+feel free to send email to: AlirezaRahmani@live.com
