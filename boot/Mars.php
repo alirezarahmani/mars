@@ -24,7 +24,7 @@ class Mars
         if (PHP_SAPI == "cli") {
             $this->runCli(new ArgvInput(), new ConsoleOutput());
         } else {
-           throw new \Exception(' we only support CLI');
+             throw new \Exception(' we only support CLI');
         }
     }
 

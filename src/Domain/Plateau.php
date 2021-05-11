@@ -27,7 +27,7 @@ final class Plateau
     /**
      * @param MarsRover $rover
      */
-    public function addRover(MarsRover $rover)
+    public function addRover(MarsRover $rover): void
     {
         $this->rovers[] = $rover;
     }

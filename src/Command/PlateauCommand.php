@@ -16,7 +16,8 @@ class PlateauCommand implements CommandInterface
      * @param int $y
      */
     public function __construct(private int $x, private int $y)
-    {}
+    {
+    }
 
     /**
      * @return int

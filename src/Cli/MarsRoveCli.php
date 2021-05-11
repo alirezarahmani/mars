@@ -29,14 +29,14 @@ class MarsRoveCli extends Command
         $this->addOption('force');
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('mars:rover')
             ->setDescription('move mars rovers over mars!')
             ->addArgument(
                 'arguments',
-                InputArgument::IS_ARRAY |InputArgument::REQUIRED,
+                InputArgument::IS_ARRAY|InputArgument::REQUIRED,
                 'Enter moves of Mars Rover (separate actions with a space)'
             );
     }
@@ -49,6 +49,7 @@ class MarsRoveCli extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
+        /** @var array $args */
         $args = $input->getArgument('arguments');
         Assertion::notEmpty($args, 'make sure you entered right arguments');
         // make sure input format is correct

@@ -11,8 +11,8 @@ use MarsRover\Exceptions\InvalidMoveException;
  * in php 8.1 we can define enum, but here I use 8.0
  * @package MarsRover\ValueObject
  */
-class Direction {
-
+class Direction
+{
     const N = 'N';
     const E = 'E';
     const W = 'W';

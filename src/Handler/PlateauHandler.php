@@ -18,7 +18,8 @@ class PlateauHandler
      * @param PlateauCommand $command
      */
     public function __construct(private PlateauCommand $command)
-    {}
+    {
+    }
 
     /**
      * @return Plateau

@@ -28,8 +28,14 @@ class MarsRoverCommand implements CommandInterface
      * @param string $moves
      * @param Plateau $plateau
      */
-    public function __construct(private int $x, private int $y, private string $direction, private string $moves, private Plateau $plateau)
-    {}
+    public function __construct(
+        private int $x,
+        private int $y,
+        private string $direction,
+        private string $moves,
+        private Plateau $plateau
+    ) {
+    }
 
     /**
      * @return Direction

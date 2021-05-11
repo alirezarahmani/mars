@@ -38,7 +38,7 @@ final class MarsRover
     /**
      * @param RoverMove $roverMove
      */
-    public function move(RoverMove $roverMove)
+    public function move(RoverMove $roverMove): void
     {
         // in php 8.1 we can define enum, but here I use 8.0 had to type cast
         switch ((string)$roverMove) {
@@ -57,7 +57,7 @@ final class MarsRover
     /**
      * turn a rover
      */
-    public function turnLeft()
+    public function turnLeft(): void
     {
         // in php 8.1 we can define enum, but here I use 8.0 had to type cast
         $this->heading = match ((string)$this->heading) {
@@ -75,7 +75,7 @@ final class MarsRover
      */
     public function reportPosition(): string
     {
-       return $this->position . ' ' . $this->heading;
+        return $this->position . ' ' . $this->heading;
     }
 
     /**
@@ -83,13 +83,13 @@ final class MarsRover
      */
     public function currentPosition(): Position
     {
-       return $this->position;
+        return $this->position;
     }
 
     /**
      * turn rover
      */
-    private function turnRight()
+    private function turnRight(): void
     {
         // in php 8.1 we can define enum, but here I use 8.0 had to type cast
         $this->heading = match ((string)$this->heading) {
@@ -104,7 +104,7 @@ final class MarsRover
     /**
      * move the rover
      */
-    private function moveForward()
+    private function moveForward(): void
     {
         $this->position->moveForward($this->heading);
     }

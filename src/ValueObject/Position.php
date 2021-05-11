@@ -6,6 +6,7 @@ namespace MarsRover\ValueObject;
 
 use Assert\Assertion;
 use MarsRover\Domain\Plateau;
+use MarsRover\Exceptions\InvalidDirectionException;
 
 /**
  * Class Position
@@ -62,11 +63,12 @@ class Position
      */
     public function moveForward(Direction $direction) :void
     {
-         match ((string)$direction) {
+        match ((string)$direction) {
             Direction::E => $this->x++,
             Direction::N => $this->y++,
             Direction::S => $this->y--,
-            Direction::W => $this->x--
+            Direction::W => $this->x--,
+            default => throw new InvalidDirectionException('Unexpected match value')
         };
     }
 

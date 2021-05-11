@@ -25,7 +25,11 @@ class MarsRoverHandler
      */
     public function __construct(private MarsRoverCommand $command)
     {
-        $this->marsRover = new MarsRover($this->command->getPosition(), $this->command->getRoverDirection(), $this->command->getPlateau());
+        $this->marsRover = new MarsRover(
+            $this->command->getPosition(),
+            $this->command->getRoverDirection(),
+            $this->command->getPlateau()
+        );
         $moves = $this->command->getMoves();
         /** @var RoverMove $move */
         foreach ($moves as $move) {
