@@ -1,0 +1,25 @@
+includes:
+    - ../vendor/phpstan/phpstan-doctrine/extension.neon
+    - ../vendor/phpstan/phpstan-phpunit/extension.neon
+    - ../vendor/phpstan/phpstan-phpunit/rules.neon
+    - ../vendor/svnldwg/phpstan-rules/rules.neon
+parameters:
+    level: max
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+    inferPrivatePropertyTypeFromConstructor: true
+    parallel:
+    	processTimeout: 300.00
+    paths:
+        - %currentWorkingDirectory%/config/
+        - %currentWorkingDirectory%/src/
+    ignoreErrors:
+         -
+             message: '/^Unsafe usage of new static\(\).$/'
+             path: %currentWorkingDirectory%/src/Domain/ValueObject/ImmutableCollection.php
+         -
+             message: '/^Call to an undefined method Jose\\Easy\\AbstractLoader::run\(\).$/'
+             path: %currentWorkingDirectory%/src/Application/Service/Sso/AccessTokenValidator.php
+         -
+             message: '/^Call to an undefined method Jose\\Easy\\AbstractLoader::run\(\).$/'
+             path: %currentWorkingDirectory%/src/Application/Service/Sso/UserDataExtractor.php
