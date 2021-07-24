@@ -41,7 +41,7 @@ class MarsRoverFactory
     /**
      * @return string
      */
-    #[Pure] public function reportPosition(): string
+    public function reportPosition(): string
     {
         return $this->marsRover->reportPosition();
     }
