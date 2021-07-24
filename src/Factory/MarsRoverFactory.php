@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MarsRover\Factory;
 
-use JetBrains\PhpStorm\Pure;
 use MarsRover\InputRequest\MarsRoverInputRequest;
 use MarsRover\Domain\MarsRover;
 use MarsRover\ValueObject\RoverMove;
