@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace MarsRover\Command;
+namespace MarsRover\InputRequest;
 
 /**
  * Interface CommandInterface
  * @package MarsRover\Command
  */
-interface CommandInterface
+interface InputRequestInterface
 {
 }

@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MarsRover\Handler;
+namespace MarsRover\Factory;
 
-use MarsRover\Command\MarsRoverCommand;
+use JetBrains\PhpStorm\Pure;
+use MarsRover\InputRequest\MarsRoverInputRequest;
 use MarsRover\Domain\MarsRover;
 use MarsRover\ValueObject\RoverMove;
 
@@ -12,7 +13,7 @@ use MarsRover\ValueObject\RoverMove;
  * Class MarsRoverHandler
  * @package MarsRover\Handler
  */
-class MarsRoverHandler
+class MarsRoverFactory
 {
     /**
      * @var MarsRover
@@ -21,16 +22,16 @@ class MarsRoverHandler
 
     /**
      * MarsRoverHandler constructor.
-     * @param MarsRoverCommand $command
+     * @param MarsRoverInputRequest $input
      */
-    public function __construct(private MarsRoverCommand $command)
+    public function __construct(private MarsRoverInputRequest $input)
     {
         $this->marsRover = new MarsRover(
-            $this->command->getPosition(),
-            $this->command->getRoverDirection(),
-            $this->command->getPlateau()
+            $this->input->getPosition(),
+            $this->input->getRoverDirection(),
+            $this->input->getPlateau()
         );
-        $moves = $this->command->getMoves();
+        $moves = $this->input->getMoves();
         /** @var RoverMove $move */
         foreach ($moves as $move) {
             $this->marsRover->move($move);
@@ -40,7 +41,7 @@ class MarsRoverHandler
     /**
      * @return string
      */
-    public function reportPosition(): string
+    #[Pure] public function reportPosition(): string
     {
         return $this->marsRover->reportPosition();
     }

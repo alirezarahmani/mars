@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace MarsRover\Cli;
 
 use Assert\Assertion;
-use MarsRover\Command\MarsRoverCommand;
-use MarsRover\Command\PlateauCommand;
-use MarsRover\Handler\MarsRoverHandler;
-use MarsRover\Handler\PlateauHandler;
+use MarsRover\InputRequest\MarsRoverInputRequest;
+use MarsRover\InputRequest\PlateauInputRequest;
+use MarsRover\Factory\MarsRoverFactory;
+use MarsRover\Factory\PlateauFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -61,15 +61,15 @@ class MarsRoveCli extends Command
 
         // dispatch plateau manually
         // no command bus
-        $plateauCommand = new PlateauCommand($plateauCoordinatesX, $plateauCoordinatesY);
-        $plateau = (new PlateauHandler($plateauCommand))->getPlateau();
+        $plateauCommand = new PlateauInputRequest($plateauCoordinatesX, $plateauCoordinatesY);
+        $plateau = (new PlateauFactory($plateauCommand))->getPlateau();
 
         // iterate over all rovers positions and headings
         for ($i = 0; $i < count($args); $i+=4) {
             // get arguments with order
             // i= X  i+1= Y i+2= Heading i+3= movements
-            $command = new MarsRoverCommand(intval($args[$i]), intval($args[$i+1]), $args[$i+2], $args[$i+3], $plateau);
-            $roverHandler = new MarsRoverHandler($command);
+            $command = new MarsRoverInputRequest(intval($args[$i]), intval($args[$i+1]), $args[$i+2], $args[$i+3], $plateau);
+            $roverHandler = new MarsRoverFactory($command);
             $output->writeln($roverHandler->reportPosition());
         }
 

@@ -74,30 +74,24 @@ class MarsRoverTest extends TestCase
     /** @test */
     public function moving_rover_beyond_plateau_should_throw()
     {
-        try {
-            // arrange
-            $rover = new MarsRover(new Position(3, 6), new Direction('E'), $this->plateau);
-            // action
-            $rover->move(new RoverMove('M'));
-            $this->assertTrue('should not reach here', false);
-        } catch (PositionNotOnPlateauException $ex) {
-            // assert
-            $this->assertEquals('Position not on plateau', $ex->getMessage());
-        }
+        $this->expectException(PositionNotOnPlateauException::class);
+        $this->expectExceptionMessage('Position not on plateau');
+        // arrange
+        $rover = new MarsRover(new Position(3, 6), new Direction('E'), $this->plateau);
+        // action
+        $rover->move(new RoverMove('M'));
     }
 
     /** @test  */
     public function unknown_move_direction_should_throw() {
-        try {
-            // arrange
-            new MarsRover(new Position(3, 5), new Direction('G'), $this->plateau);
-            $this->assertTrue('should not reach here', false);
-        } catch (InvalidMoveException $ex) {
-            // assert
-            $this->assertEquals('G not found', $ex->getMessage());
-        }
+        $this->expectException(InvalidMoveException::class);
+        $this->expectExceptionMessage('G not found');
+        new MarsRover(new Position(3, 5), new Direction('G'), $this->plateau);
     }
 
+    /**
+     * instead of expectException i used try catch here
+     */
     /** @test  */
     public function moving_rover_over_another_rover_should_throw() {
         // arrange

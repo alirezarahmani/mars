@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MarsRover\Command;
+namespace MarsRover\InputRequest;
 
 /**
  * Class PlateauCommand
  * @package MarsRover\Command
  */
-class PlateauCommand implements CommandInterface
+class PlateauInputRequest implements InputRequestInterface
 {
     /**
      * PlateauCommand constructor.

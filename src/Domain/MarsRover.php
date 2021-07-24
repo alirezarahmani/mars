@@ -106,6 +106,14 @@ final class MarsRover
      */
     private function moveForward(): void
     {
-        $this->position->moveForward($this->heading);
+        $x = $this->position->getX();
+        $y = $this->position->getY();
+        match ((string)$this->heading) {
+            Direction::E => $this->position = new Position(++$x, $y),
+            Direction::N => $this->position = new Position($x, ++$y),
+            Direction::S => $this->position = new Position($x, --$y),
+            Direction::W => $this->position = new Position(--$x, $y),
+            default => throw new InvalidDirectionException('Unexpected match value')
+        };
     }
 }

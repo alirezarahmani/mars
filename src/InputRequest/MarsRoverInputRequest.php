@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MarsRover\Command;
+namespace MarsRover\InputRequest;
 
 use MarsRover\Domain\Plateau;
 use MarsRover\ValueObject\Direction;
@@ -13,7 +13,7 @@ use MarsRover\ValueObject\RoverMove;
  * Class MarsRoverCommand
  * @package MarsRover\Command
  */
-class MarsRoverCommand implements CommandInterface
+class MarsRoverInputRequest implements InputRequestInterface
 {
     /**
      * @var array
